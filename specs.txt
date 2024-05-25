@@ -1,0 +1,16 @@
+index.php
+---------
+A simple web page for booking appointments.  The code connects to mysql database to book appointments.
+
+The common/db.php include has the database connection.  Database connections are required in multiple files so the code is written in one place and included whereever needed.
+
+If the http request method is POST, it means user submitted form.  The submitted data is retrieved.  A sql query is created for inserting data into bookings, where submitted data is saved.  Another sql query updates status of slot to not available.
+
+The user is redirected back to the home page so refresh does not cause form to resubmit again.
+
+Next, the form is created.  First the query is used to retrieve next 10 available slots based.  The status of the slots has to be available.  The date and time of the slot has to be in future.  Maximum 10 slots are retrieved, but less than 10 slots could also be retrieved.  This information is stored in the $slots array.
+
+If there are no slots available, a message is displayed "No slots available".
+
+The available slots are displayed in the drop down.  The form is submitted using the post method to the same page.
+
